@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>🔍 Resume Skill Gap Analyzer</h1>
+            <p>Upload your resume and find out what skills you're missing for the job!</p>
+        </header>
+
+        <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+            <label class="file-label">
+                Choose Resume (PDF)
+                <input type="file" name="resume" required>
+            </label>
+            <button type="submit">🚀 Analyze</button>
+        </form>
+
+        {% if resume_skills %}
+        <div class="results">
+            <h2>✅ Matched Skills</h2>
+            <ul>
+                {% for skill in resume_skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if missing_skills %}
+        <div class="results warning">
+            <h2>❌ Missing Skills</h2>
+            <ul>
+                {% for skill in missing_skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

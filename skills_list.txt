@@ -1,0 +1,10 @@
+Python
+SQL
+Machine Learning
+Power BI
+Git
+Docker
+NLP
+AWS
+Data Analysis
+Java
